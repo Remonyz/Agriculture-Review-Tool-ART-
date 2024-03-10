@@ -1,0 +1,203 @@
+/* HMP.css */
+.pg1 {
+    min-height: 100vh; /* Ensure the container covers the entire viewport height */
+    background-image: url('137520.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.p3{
+    min-height: 100vh; /* Ensure the container covers the entire viewport height */
+    background-image: url('791419.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+.black-border {
+    text-shadow:rgb(0, 0, 0);
+    padding: 2px; /* Optional: Add some padding around the words */
+}
+h1{
+    color: #ccc;
+    text-shadow: black 4px 4px 7px; /* color offset-x offset-y blur-radius */
+    font-size: 46px;
+    text-align: center;
+    margin-top: 10px;
+    font-style: bold;
+
+}
+.Title{
+    text-shadow: white 0px 0px 0px; /* color offset-x offset-y blur-radius */
+    color:black;
+}
+.intro{
+    color: #ccc;
+    text-shadow: black 2px 2px 7px; /* color offset-x offset-y blur-radius */
+
+    font-size: 26px;
+    text-align: center;
+    margin-top: 10px;
+}
+/* Reset default margin and padding */
+body, p, ul, li, table, th, td, footer {
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the header */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    font-size:x-large;
+}
+
+/* Style the navigation menu */
+nav ul {
+    list-style-type: none;
+    text-align: center;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+.pg2{
+    background-color: #d9dde1;
+}
+
+/* Style the title */
+
+/* Style the main table */
+.states {
+    width: 50%;
+    margin: 20px auto;
+    border-collapse: collapse;
+}
+
+.states th, .states td {
+    border: 1px solid #333;
+    padding: 8px;
+    text-align: center;
+}
+
+.states th {
+    background-color: #333;
+    color: #fff;
+}
+
+.form_container{
+    padding: 20;
+}
+
+
+/* Style the submit button */
+/* Add this CSS to your HMP.css file */
+
+/* Style for form fields */
+.form_field {
+    margin-bottom: 15px;
+  }
+  
+  /* Style for select elements */
+  #state_input,
+  #crop_input {
+    width: 75%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff; /* Background color */
+    box-sizing: border-box;
+    margin-left: 80px;
+  }
+  
+  /* Style for input elements */
+  #acres_input {
+    width: 75%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #fff; /* Background color */
+    box-sizing: border-box;
+    margin-left: 80px;
+
+  }
+  
+  /* Style for the submit button */
+  .submit_button {
+    width: 75%;
+    padding: 20px;
+    margin-top: 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff; /* Background color */
+    color: #fff; /* Text color */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-left: 80px;
+
+  }
+  
+  .submit_button:hover {
+    background-color: #0056b3; /* Change background color on hover */
+  }
+
+.submit_button:active {
+    /* Add click effect */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Add shadow effect */
+}
+
+
+/* Style the submit button */
+
+/* Style the footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Align items vertically centered */
+    margin-top: 50px; /* Add margin to move it slightly lower on the page */
+}
+
+.form_container {
+    width: 40%;
+}
+
+#return {
+    width: 40%;
+    padding: 10px;
+    /* border: 1px solid black; */
+    box-sizing: border-box;
+    margin-left: 20px; /* Add margin to shift it slightly towards the center */
+}
+#return ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0;
+}
+
+#return li {
+    font-size: 36px; /* Increase font size */
+    background-color: #333; /* Wrap in a white background */
+    padding: 10px; /* Add padding for better spacing */
+    margin-bottom: 10px; /* Add margin-bottom for spacing between list items */
+    margin-right:180px;
+}
+
+
+

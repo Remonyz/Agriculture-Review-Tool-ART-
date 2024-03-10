@@ -1,0 +1,122 @@
+<html>
+    <head>
+        <link rel = "stylesheet" type = "text/css" href = "static/HMP.css">
+    </head>
+    <header>
+        <nav>
+            <ul>
+                <li><a href = "HMP.html">Home</a></li>
+                <li><a href= "/HMP2.html">Search By State</a></li>
+                <li><a href= "/HMP3.html">Compare your Crops</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <body class = "p3">
+        <div class="container">
+            <div class="form_container">
+                <form id="cropForm">
+                    <div class="form_field">
+                        <select id="state_input" placeholder="Enter the State you Live in..."></select>
+                    </div>
+                    <div class="form_field">
+                        <select id="crop_input" placeholder="Enter Crop the Crop you grow..."></select>
+                    </div>
+                    <div class="form">
+                        <input type="text" id="acres_input" placeholder="Enter the Acreage you Own...">
+                    </div>
+                    <button class="submit_button" type="submit" variant="contained" color="primary" fullWidth>Submit</button>
+                </form>
+            </div>
+
+            <div id="return"></div>
+        </div>
+        <script>
+            document.getElementById("cropForm").addEventListener("submit", function(event) {
+                event.preventDefault();
+                var state = document.getElementById("state_input").value;
+                var crop = document.getElementById("crop_input").value;
+                var acres = document.getElementById("acres_input").value;
+                var xhttp = new XMLHttpRequest();
+                xhttp.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        var responseData = JSON.parse(xhttp.responseText);
+                        var responseHTML = "<ul>";
+                        for (var key in responseData) {
+                            if (responseData.hasOwnProperty(key)) {
+                                responseHTML += "<li>" + key + ": " + responseData[key] + "</li>";
+                            }
+                        }
+                        responseHTML += "</ul>";
+                        document.getElementById("return").innerHTML = responseHTML;
+                    }
+                };
+                xhttp.open("GET", `/get_crop_info?state=${state}&commodity=${crop}&acres=${acres}`, true);
+                xhttp.send();
+            });
+
+            function populateStateSelect() {
+                var selectState = document.getElementById("state_input");
+
+                selectState.addEventListener("change", function() {
+                    var selectedState = selectState.value;
+                    if (selectedState) {
+                        populateCropSelect(selectedState); // Call populateCropSelect() only when state selection changes and state is selected
+                    }
+                });
+
+                var xhttp = new XMLHttpRequest();
+
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var json = JSON.parse(xhttp.responseText);
+
+                        selectState.innerHTML = '<option value="">Select a State</option>';
+
+                        for (var i = 0; i < json.length; i++) {
+                            var option = document.createElement("option");
+                            option.value = json[i];
+                            option.text = json[i];
+                            selectState.appendChild(option);
+                        }
+                    }
+                };
+
+                xhttp.open("GET", "/getState", true);
+                xhttp.send();
+            }
+
+            // Call populateStateSelect() to populate the state dropdown
+            populateStateSelect();
+
+            // Update populateCropSelect() to accept the selected state as an argument
+            function populateCropSelect(selectedState) {
+                var selectCrop = document.getElementById("crop_input");
+
+                var xhttp = new XMLHttpRequest();
+
+                xhttp.onreadystatechange = function() {
+                    if (this.readyState == 4 && this.status == 200) {
+                        var json = JSON.parse(xhttp.responseText);
+
+                        selectCrop.innerHTML = '<option value="">Select a Crop</option>';
+
+                        for (var i = 0; i < json.length; i++) {
+                            var option = document.createElement("option");
+                            option.value = json[i];
+                            option.text = json[i];
+                            selectCrop.appendChild(option);
+                        }
+                    }
+                };
+
+                xhttp.open("GET", "/getCommodities?state=" + selectedState, true); // Pass the selected state to the server
+                xhttp.send();
+            }
+
+        </script>
+    </body>
+    <footer>
+        <p>&copy; 2024 Hack Merced. All rights reserved.</p>
+    </footer>
+</html>
